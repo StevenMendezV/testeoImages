@@ -23,8 +23,23 @@ public class UsuariosController {
         return usuariosService.obtenerUsuarios();
     }
 
-    @PostMapping
+    @GetMapping("/{id}")
+    public Usuarios obtenerUsuarioPorId(@PathVariable int id){
+        return usuariosService.obtenerUsuarioPorId(id);
+    }
+
+    @GetMapping("/email")
+    public Usuarios obtenerUsuarioPorEmail(@RequestParam("email") String email){
+        return usuariosService.obtenerUsuarioPorEmail(email);
+    }
+
+    @PostMapping("crearUsuario")
     public Usuarios crearUsuario(@RequestBody Usuarios usuario){
         return usuariosService.crearUsuario(usuario);
+    }
+
+    @DeleteMapping("eliminarUsuario/{id}")
+    public void eliminarUsuario(@PathVariable int id){
+        usuariosService.eliminarUsuario(id);
     }
 }

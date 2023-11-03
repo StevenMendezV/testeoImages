@@ -3,9 +3,7 @@ package com.example.mewoofBCK.Controller;
 import com.example.mewoofBCK.Entity.Mascotas;
 import com.example.mewoofBCK.Service.MascotasService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,8 +19,23 @@ public class MascotasController {
     }
 
     @GetMapping
-    public List<Mascotas> getMascotas(){
-        return mascotasService.getMascotas();
+    public List<Mascotas> traerListaMascotas(){
+        return mascotasService.traerListaMascotas();
+    }
+
+    @GetMapping("/{id}")
+    public Mascotas obtenerMascotaPorId(@PathVariable int id){
+        return mascotasService.obtenerMascotaPorId(id);
+    }
+
+    @PostMapping("crearMascota")
+    public Mascotas crearMascota(@RequestBody Mascotas mascota){
+        return mascotasService.crearMascotas(mascota);
+    }
+
+    @DeleteMapping("eliminarMascota/{id}")
+    public void eliminarMascota(@PathVariable int id){
+        mascotasService.eliminarMascota(id);
     }
 
 }

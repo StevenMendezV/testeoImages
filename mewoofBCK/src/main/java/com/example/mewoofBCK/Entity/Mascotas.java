@@ -26,7 +26,7 @@ public class Mascotas {
     @OneToOne
     @JoinColumn(name = "ID_Size")
     private Sizes size;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "ID_Usuario")
     private Usuarios usuario;
     @OneToOne

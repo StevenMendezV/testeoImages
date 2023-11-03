@@ -17,10 +17,29 @@ public class UsuariosService {
     }
 
     public List<Usuarios> obtenerUsuarios(){
+
         return usuariosRepository.findAll();
+    }
+
+    public Usuarios obtenerUsuarioPorId(int id){
+        return usuariosRepository.findById(id).orElse(null);
+    }
+
+    public Usuarios obtenerUsuarioPorEmail(String email){
+        return usuariosRepository.findByEmail(email);
     }
 
     public Usuarios crearUsuario(Usuarios usuario){
         return usuariosRepository.save(usuario);
     }
+
+    public void eliminarUsuario(int id){
+        usuariosRepository.deleteById(id);
+    }
+
+    /*public Usuarios actualizarUsuario(int id, Usuarios usuarioModificado){
+        return this.usuariosRepository.findById(id).map(personaActual -> {
+            personaActual.
+        })
+    }*/
 }

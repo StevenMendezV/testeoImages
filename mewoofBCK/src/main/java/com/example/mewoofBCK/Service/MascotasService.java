@@ -17,8 +17,20 @@ public class MascotasService {
         this.mascotasRepository = mascotasRepository;
     }
 
-    public List<Mascotas> getMascotas(){
+    public List<Mascotas> traerListaMascotas(){
         return mascotasRepository.findAll();
+    }
+
+    public Mascotas obtenerMascotaPorId(int id){
+        return mascotasRepository.findById(id).orElse(null);
+    }
+
+    public Mascotas crearMascotas(Mascotas mascota){
+        return mascotasRepository.save(mascota);
+    }
+
+    public void eliminarMascota(int id){
+        mascotasRepository.deleteById(id);
     }
 
 
